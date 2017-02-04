@@ -1,6 +1,6 @@
 # name: gnuykeaj
 # ---------------
-# Based on clearance, which is based off idan. 
+# Based on clearance, which is based off idan.
 # 1 line minimal, beautiful version of clearance.
 # Display the following bits on the left:
 # - Virtualenv name (if applicable, see https://github.com/adambrenecki/virtualfish)
@@ -26,7 +26,7 @@ function fish_prompt
   set -l normal (set_color normal)
 
   set -l cwd $blue(basename (pwd | sed "s:^$HOME:~:"))
-  
+
   # Display [venvname] if in a virtualenv
   if set -q VIRTUAL_ENV
       echo -n -s (set_color -b cyan black) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
@@ -47,11 +47,11 @@ function fish_prompt
     echo -n -s ' · ' $git_info $normal
   end
 
-  set -l prompt_color $red
-  if test $last_status = 0
-    set prompt_color $normal
-  end
-
   # Terminate with a nice prompt char
-  echo -e -n -s $prompt_color ' ⟩ ' $normal
+  if test $last_status = 0
+    echo -e -n -s $normal  ' (◕_◕) '
+  else
+    echo -e -n -s $red  ' (O_O) '
+  end
+  echo -e -n -s $normal
 end
